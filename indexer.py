@@ -1,6 +1,6 @@
 from nyaa import nyaa
 import guessit
-import sys
+from utils import mal
 
 NYAA_USERS = {
 'hoshisora.moe':[158741,],
@@ -19,10 +19,15 @@ def main():
                 offset +=1
                 for res in results:
                     data = guessit.guessit(res.title)
+                    #issue https://github.com/guessit-io/guessit/issues/245
                     try:
-                        fansub,data["release_group"], data["title"]
+                        title = data["title"]
                     except KeyError:
-                        print data
+                        title = data.get("film_title")
+                    release_group = data["release_group"]
+                    print mal(title)
+                        
+
 
 
 if __name__=="__main__":
