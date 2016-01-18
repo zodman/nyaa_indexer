@@ -19,16 +19,10 @@ def main():
                 offset +=1
                 for res in results:
                     data = guessit.guessit(res.title)
-                    #issue https://github.com/guessit-io/guessit/issues/245
-                    try:
-                        title = data["title"]
-                    except KeyError:
-                        title = data.get("film_title")
+                    title = data["title"]
                     release_group = data["release_group"]
-                    print mal(title)
-                        
-
-
+                    mal_data = mal(title)
+                    print mal_data.id, mal_data.title, mal_data.title_en, title
 
 if __name__=="__main__":
     main()

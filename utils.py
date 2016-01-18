@@ -32,6 +32,7 @@ def mal(mal_title, mal_id=False):
              if mal_id in e:
                  content = e
                  break
+    id = xpath.get(content, "//id")
     title = xpath.get(content, "//title")
     title_en = xpath.get(content, "//english")
     type_ = xpath.get(content, "//type")
@@ -44,8 +45,9 @@ def mal(mal_title, mal_id=False):
     resumen = translate(resumen,'es')
     status = translate(status,'es')
     MalResult = namedtuple('MalResult',[
-    'title','title_en','synonyms', 'episodes','img','resumen','status',
+    'title','title_en','synonyms', 'episodes','img','resumen','status',"type",
+    'id',
     ])
     data=dict(title=title, title_en=title_en, type=type_, status=status,
-    resumen=resumen, img=img,episodes=episodes, synonyms=synonyms)
+    resumen=resumen, img=img,episodes=episodes, synonyms=synonyms,id=id)
     return MalResult(**data)
