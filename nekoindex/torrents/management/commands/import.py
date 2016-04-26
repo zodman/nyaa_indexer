@@ -10,9 +10,13 @@ NYAA_USERS = {
 }
 
 MAL_ANIMES = {
-'Hundred':("Hundred", "31338"),        
+'Hundred':("Hundred", "31338"),
 "Seisen Cerberus Ryukoku no Fatalite":("Cerberus",'32595'),
 "ReZero kara Hajimeru Isekai Seikatsu":("Re:Zero kara Hajimeru Isekai Seikatsu","31240"),
+"Kidou Senshi Gundam UC RE0096":("Mobile Suit Gundam Unicorn RE:0096","32792"),
+"Terraformars Revenge": ("Terra formars Revenge","31430"),
+"JoJo's Bizarre Adventure Diamond is Unbreakable":("JoJo no Kimyou na Bouken: Diamond wa Kudakenai","31933"),
+"Kagewani Shou":("Kagewani: Shou","32682")
 }
 
 class Command(BaseCommand):
@@ -34,7 +38,11 @@ class Command(BaseCommand):
                             search_title,  mal_id = MAL_ANIMES[title]
                             title = search_title
                             kwargs_ = {'mal_id':mal_id}
-                        mal_data = mal(title,**kwargs_)
+                        try:
+                            mal_data = mal(title,**kwargs_)
+                        except:
+                            print ">>>> %s" % title
+                            pass
                         torrent,created  = Torrent.objects.get_or_create(full=res.title)
                         torrent.url = res.link
                         torrent.download_url = res.link.replace("view", "download")
@@ -44,7 +52,7 @@ class Command(BaseCommand):
                         mal_obj, _ = MALMeta.objects.get_or_create(mal_id=mal_data.id)
                         mal_obj.image = mal_data.img
                         mal_obj.save()
-                        meta,_ = MetaTorrent.objects.get_or_create(torrent=torrent, 
+                        meta,_ = MetaTorrent.objects.get_or_create(torrent=torrent,
                                 anime=anime, fansub=fansub, mal=mal_obj)
                         print data
                         meta.episode=data.get("episode", data.get("episode_title"))
@@ -52,4 +60,3 @@ class Command(BaseCommand):
                         meta.save()
                         print meta.torrent.full
                         #print "{} {} {} ".format( mal_data.title, mal_data.title_en, title)
-
