@@ -16,7 +16,11 @@ MAL_ANIMES = {
 "Kidou Senshi Gundam UC RE0096":("Mobile Suit Gundam Unicorn RE:0096","32792"),
 "Terraformars Revenge": ("Terra formars Revenge","31430"),
 "JoJo's Bizarre Adventure Diamond is Unbreakable":("JoJo no Kimyou na Bouken: Diamond wa Kudakenai","31933"),
-"Kagewani Shou":("Kagewani: Shou","32682")
+"Kagewani Shou":("Kagewani: Shou","32682"),
+"The World God Only Knows Tenri Arc":("Kami nomi zo Shiru Sekai: Tenri-hen","15117"),
+"Kami nomi zo Shiru Sekai: 4-nin to Idol":("Kami nomi zo Shiru Sekai: 4-nin to Idol","10805"),
+"Yozakura Quartet Hoshi no Umi": ("Yozakura Quartet: Hoshi no Umi","8457"),
+"Wizard Barristers Benmashi Cecil":("Wizard Barristers: Benmashi Cecil","20053"),
 }
 
 class Command(BaseCommand):
@@ -32,7 +36,6 @@ class Command(BaseCommand):
                     for res in results:
                         data = guessit.guessit(res.title)
                         title = data.get("title")
-                        print title
                         kwargs_ = {}
                         if title in MAL_ANIMES:
                             search_title,  mal_id = MAL_ANIMES[title]
@@ -54,9 +57,7 @@ class Command(BaseCommand):
                         mal_obj.save()
                         meta,_ = MetaTorrent.objects.get_or_create(torrent=torrent,
                                 anime=anime, fansub=fansub, mal=mal_obj)
-                        print data
                         meta.episode=data.get("episode", data.get("episode_title"))
                         meta.format=data.get("format", data.get("screen_size"))
                         meta.save()
-                        print meta.torrent.full
                         #print "{} {} {} ".format( mal_data.title, mal_data.title_en, title)
