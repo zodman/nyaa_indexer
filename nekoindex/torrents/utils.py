@@ -44,6 +44,7 @@ def mal(mal_title, mal_id=False):
     resumen = synopsys.replace("&lt;br /&gt;", " ").replace("\n\r","")
     resumen = translate(resumen,'es')
     status = translate(status,'es')
+    assert id is not "", mal_title
     MalResult = namedtuple('MalResult',[
     'title','title_en','synonyms', 'episodes','img','resumen','status',"type",
     'id',
