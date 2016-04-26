@@ -6,14 +6,14 @@ from django.db import models
 class Fansub(models.Model):
     name = models.CharField(max_length=100,unique=True)
     def __unicode__(self):
-        return self.name
+        return u"%s" % self.name
 
 
 class Anime(models.Model):
     title = models.CharField(max_length=300, unique=True)
 
     def __unicode__(self):
-        return self.title
+        return u"%s" % self.title
 
 class MALMeta(models.Model):
     mal_id = models.PositiveIntegerField(unique=True, null = False, blank = False)
@@ -22,7 +22,7 @@ class MALMeta(models.Model):
     alternative_title = models.CharField(max_length=300, null=True, blank=True)
 
     def __unicode__(self):
-        return self.mal_id
+        return u"%s" %self.mal_id
 
 
 class MetaTorrent(models.Model):
@@ -30,8 +30,8 @@ class MetaTorrent(models.Model):
     fansub = models.ForeignKey("Fansub")
     anime = models.ForeignKey("Anime")
     mal = models.ForeignKey("MALMeta")
-    episode = models.CharField(max_length=20, null=True)
-    format = models.CharField(max_length=10,null=True)
+    episode = models.CharField(max_length=20, null=True, blank=True)
+    format = models.CharField(max_length=10,null=True, blank=True)
 
     def __unicode__(self):
         return u"%s %s" % (self.id, self.torrent.full)
@@ -44,5 +44,5 @@ class Torrent(models.Model):
     download_magnet = models.TextField(null=True)
 
     def __unicode__(self):
-        return self.full
+        return u"%s" % self.full
 
