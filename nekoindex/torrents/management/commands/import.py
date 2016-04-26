@@ -12,6 +12,7 @@ NYAA_USERS = {
 MAL_ANIMES = {
 'Hundred':("Hundred", "31338"),        
 "Seisen Cerberus Ryukoku no Fatalite":("Cerberus",'32595'),
+"ReZero kara Hajimeru Isekai Seikatsu":("Re:Zero kara Hajimeru Isekai Seikatsu","31240"),
 }
 
 class Command(BaseCommand):
