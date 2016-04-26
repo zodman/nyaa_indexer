@@ -6,7 +6,7 @@ from torrents.models import Torrent, Anime, MetaTorrent, Fansub, MALMeta
 
 NYAA_USERS = {
 'hoshisora.moe':[158741,],
-'puya.se': [239789,],
+#'puya.se': [239789,],
 }
 
 MAL_ANIMES = {
@@ -47,7 +47,7 @@ class Command(BaseCommand):
                         meta,_ = MetaTorrent.objects.get_or_create(torrent=torrent, 
                                 anime=anime, fansub=fansub, mal=mal_obj)
                         print data
-                        meta.episode=data.get("episode")
+                        meta.episode=data.get("episode", data.get("episode_title"))
                         meta.format=data.get("format", data.get("screen_size"))
                         meta.save()
                         print meta.torrent.full
