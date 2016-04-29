@@ -34,18 +34,17 @@ class Command(BaseCommand):
                         except:
                             print ">>>> %s" % title
                             pass
-                        torrent,created  = Torrent.objects.get_or_create(full=res.title)
-                        torrent.url = res.link
-                        torrent.download_url = res.link.replace("view", "download")
-                        torrent.save()
                         anime,_ = Anime.objects.get_or_create(title=data.get("title"))
                         fansub,_ = Fansub.objects.get_or_create(name=data.get("release_group"))
                         mal_obj, _ = MALMeta.objects.get_or_create(mal_id=mal_data.id)
                         mal_obj.image = mal_data.img
                         mal_obj.save()
-                        meta,_ = MetaTorrent.objects.get_or_create(torrent=torrent,
+                        meta,_ = MetaTorrent.objects.get_or_create(
                                 anime=anime, fansub=fansub, mal=mal_obj)
                         meta.episode=data.get("episode", data.get("episode_title"))
                         meta.format=data.get("format", data.get("screen_size"))
                         meta.save()
-                        #print "{} {} {} ".format( mal_data.title, mal_data.title_en, title)
+
+                        torrent,created  = Torrent.objects.get_or_create(full=res.title,data=meta, url=res.link, download_url = res.link.replace("view","download"))
+                        torrent.save()
+

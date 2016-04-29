@@ -10,6 +10,7 @@ MAL_ANIMES = {
 "Kagewani Shou":("Kagewani: Shou","32682"),
 "The World God Only Knows Tenri Arc":("Kami nomi zo Shiru Sekai: Tenri-hen","15117"),
 "The World God Only Knows 4 People and an Idol": ("Kami nomi zo Shiru Sekai: 4-nin to Idol","10805"),
+"The World God Only Knows Four People and an Idol": ("Kami nomi zo Shiru Sekai: 4-nin to Idol","10805"),
 "Kami nomi zo Shiru Sekai: 4-nin to Idol":("Kami nomi zo Shiru Sekai: 4-nin to Idol","10805"),
 "Yozakura Quartet Hoshi no Umi": ("Yozakura Quartet: Hoshi no Umi","8457"),
 "Wizard Barristers Benmashi Cecil":("Wizard Barristers: Benmashi Cecil","20053"),
@@ -25,5 +26,6 @@ MAL_ANIMES = {
 "Fate stay night":("Fate/stay night","356"),
 "Fate stay Night Unlimited Blade Works":("Fate/stay night: Unlimited Blade Works","22297"),
 "Fate Stay Night Unlimited Blade Works":("Fate/stay night: Unlimited Blade Works","22297"),
+"Yozakura Quartet Tsuki ni Naku":("Yozakura Quartet: Tsuki ni Naku","18499"),
 }
 

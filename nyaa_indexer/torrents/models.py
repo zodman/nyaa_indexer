@@ -26,7 +26,6 @@ class MALMeta(models.Model):
 
 
 class MetaTorrent(models.Model):
-    torrent = models.ForeignKey("Torrent")
     fansub = models.ForeignKey("Fansub")
     anime = models.ForeignKey("Anime")
     mal = models.ForeignKey("MALMeta")
@@ -38,6 +37,7 @@ class MetaTorrent(models.Model):
 
 
 class Torrent(models.Model):
+    data = models.ForeignKey("MetaTorrent")
     full = models.TextField(unique=True)
     url = models.URLField()
     download_url = models.URLField()
