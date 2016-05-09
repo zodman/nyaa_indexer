@@ -3,6 +3,7 @@ import urllib2
 from urllib import urlencode
 from collections import namedtuple
 from webscraping import xpath
+from tqdm import tqdm
 
 def translate(to_translate, to_langage="auto", langage="auto"):
     agents = {'User-Agent':"Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30)"}
@@ -32,6 +33,8 @@ def mal(mal_title, mal_id=False):
              if mal_id in e:
                  content = e
                  break
+
+    tqdm.write("%s %s"%((mal_title,), mal_id))
     id = xpath.get(content, "//id")
     title = xpath.get(content, "//title")
     title_en = xpath.get(content, "//english")
