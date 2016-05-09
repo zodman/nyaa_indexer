@@ -7,12 +7,15 @@
 {% block body_class %}home{% endblock %}
 
 {% block body_base %}
-    <section>
-      <div class="container">
+<section>
+
+      <div class="container bg-dark">
         <div class="row">
+          <h2 class="text-center">Ultimos agregados </h3>
+          <hr>
         {%for torrent in last_torrents %} 
-        <div class="pull-left col-md-3">
-          <img width="300px" class="img-thumbnail" src="{{torrent.metatorrent.mal.image}}" />
+        <div class="pull-left col-md-3 thumb-block">
+          <img  class="img-thumbnail thumb" src="{{torrent.metatorrent.mal.image}}" />
           <h3>{{torrent.metatorrent.anime.title}}</h3>
           [{{torrent.metatorrent.fansub.name}}] 
             {{torrent.metatorrent.episode|default:""}} 
@@ -31,5 +34,5 @@
                 {% endblocktrans %}
             </p>
         </div>
-    </section>
+</section>
 {% endblock %}
