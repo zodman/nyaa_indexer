@@ -29,15 +29,15 @@ class MetaTorrent(models.Model):
     fansub = models.ForeignKey("Fansub")
     anime = models.ForeignKey("Anime")
     mal = models.ForeignKey("MALMeta")
+    torrent = models.OneToOneField("Torrent")
     episode = models.CharField(max_length=20, null=True, blank=True)
     format = models.CharField(max_length=10,null=True, blank=True)
 
     def __unicode__(self):
-        return u"%s %s" % (self.id, self.torrent.full)
+        return u"%s" % (self.id, )
 
 
 class Torrent(models.Model):
-    data = models.ForeignKey("MetaTorrent")
     full = models.TextField(unique=True)
     url = models.URLField()
     download_url = models.URLField()

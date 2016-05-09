@@ -9,11 +9,17 @@
 {% block body_base %}
     <section>
       <div class="container">
+        <div class="row">
         {%for torrent in last_torrents %} 
-        <div>
-          {{torrent.anime.name}}
+        <div class="pull-left col-md-3">
+          <img width="300px" class="img-thumbnail" src="{{torrent.metatorrent.mal.image}}" />
+          <h3>{{torrent.metatorrent.anime.title}}</h3>
+          [{{torrent.metatorrent.fansub.name}}] 
+            {{torrent.metatorrent.episode|default:""}} 
+            <small>{{torrent.metatorrent.format|default:""}}</small>
           </div>
         {% endfor %}
+        </div>
         </div>
     </section>
     <section>
