@@ -35,10 +35,10 @@
         {% for fansub  in fansub_list %}
           <div>
               {{fansub.grouper}}
-              <table>
+              <table class="table table-hover">
                 {%for meta in fansub.list %}
                  <tr>
-				 	<td>{{meta.torrent.full}}</td>
+				 	<!--td>{{meta.torrent.full}}</td-->
 					<td>{{meta.torrent.guessit.release_group}}</td>
 					<td>{{meta.torrent.guessit.title}}</td>
 					<td>{{meta.torrent.guessit.format}}</td>

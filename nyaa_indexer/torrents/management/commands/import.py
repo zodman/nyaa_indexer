@@ -3,7 +3,7 @@ from nyaa import nyaa
 import guessit
 from torrents.utils import mal
 from torrents.models import Torrent, Anime, MetaTorrent, Fansub, MALMeta
-from torrents.mal_animes import MAL_ANIMES
+from torrents.mal_animes import MAL_ANIMES, BYPASS
 from tqdm import tqdm
 
 NYAA_USERS = {
@@ -22,8 +22,11 @@ class Command(BaseCommand):
                     results = nyaa.search(user=user,offset=offset)
                     if not results:
                         break
+                 
                     offset +=1
                     for res in tqdm(results):
+                        if res.title in BYPASS:
+                            continue
                         torrent,created  = Torrent.objects.get_or_create(full=res.title, url=res.link, download_url = res.link.replace("view","download"))
                         data = guessit.guessit(res.title, {"episode_prefer_number":True})
                         title = data.get("title")

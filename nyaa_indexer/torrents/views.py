@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView, DetailView
-from torrents.models import Torrent, MALMeta, Anime
+from torrents.models import Torrent, MALMeta, Anime, Fansub
 
 class HomePage(TemplateView):
     template_name="homepage.html"
@@ -20,3 +20,21 @@ class AnimeDetail(DetailView):
     model = Anime
 
 anime_detail = AnimeDetail.as_view()
+
+
+class FansubView(TemplateView):
+    template_name = "torrents/fansub_list.html"
+
+    def get_context_data(self, **context):
+        fansub = Fansub.objects.all()
+        context.update({'fansubs': fansub})
+        return context
+
+fansub = FansubView.as_view()
+
+class FansubDetail(DetailView):
+    model = Fansub
+
+fansub_detail = FansubDetail.as_view()
+
+

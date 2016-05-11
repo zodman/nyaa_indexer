@@ -46,3 +46,6 @@ u'Gate Jieitai Kanochi nite, Kaku Tatakaeri \u2013 Enryuu-hen':("Gate: Jieitai K
 "BBKBRNK":("Bubuki Buranki","32023"),
 }
 
+BYPASS = [
+"Nietzsche-sensei",
+]

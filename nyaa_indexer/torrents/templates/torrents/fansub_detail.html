@@ -1,0 +1,49 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{{anime.title}}{% endblock %}
+
+{% block body_class %}detail-anime{% endblock %}
+
+{% block body_base %}
+<section>
+  <div class="container">
+    <div class="row">
+      <h2 class="text-center">{{fansub.name}} </h2>
+      <hr>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    {% regroup fansub.metatorrent_set.all|dictsort:"anime.title" by anime as anime_list%}
+
+
+    {%for anime_grp in anime_list %} 
+    <div class="row">
+      <div class="col-md-12">
+            <h4> 
+              {{anime_grp.grouper}}
+            </h4>
+            <table id="fansub-torrent-list" class="table table-hover">
+            {% for mt in anime_grp.list %}
+              <tr>
+                <td class="col-md-10">{{mt.episode|default:mt.torrent.full}}</td>
+                <td class="col-md-1">{{mt.torrent.guessit.format}}</td>
+                <td class="col-md-1">
+                  <a href="{{mt.torrent.download_url}}">
+                    <span class="glyphicon glyphicon-download"></span>
+                  </a>
+                </td>
+              </tr>
+            {% endfor %}
+            </table>
+          </div>
+        </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% endblock %}

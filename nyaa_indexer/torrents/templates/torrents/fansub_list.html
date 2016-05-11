@@ -1,0 +1,23 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{{anime.title}}{% endblock %}
+
+{% block body_class %}detail-anime{% endblock %}
+
+{% block body_base %}
+{%for fansub in fansubs %}
+<section>
+      <div class="container">
+        <div class="row">
+          <h2 class="text-center">
+            <a href="{% url 'fansub_detail' fansub.pk %}">{{fansub.name}}</a>
+           </h2>
+          <hr>
+           </div>
+        </div>
+    </section>
+{% endfor %}
+
+{% endblock %}

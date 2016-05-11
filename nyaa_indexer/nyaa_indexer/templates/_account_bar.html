@@ -19,6 +19,7 @@
             <li><a href="{% url 'account_signup' %}">{% trans "Sign up" %}</a></li>
         {% endif %}
     {% endif %}
+    <li><a href="{%url 'byfansub' %}">Por Fansub</a></li>
 </ul>
 
 <form id="accountLogOutForm" style="display: none;" action="{% url 'account_logout' %}" method="POST">

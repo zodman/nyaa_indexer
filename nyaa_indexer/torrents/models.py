@@ -6,12 +6,16 @@ import guessit
 
 class Fansub(models.Model):
     name = models.CharField(max_length=100,unique=True)
+    slug = models.SlugField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
         return u"%s" % self.name
 
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(Fansub,self).save(*args,**kwargs)
 
 class Anime(models.Model):
     title = models.CharField(max_length=300, unique=True)
@@ -81,7 +85,7 @@ class Torrent(models.Model):
         return u"%s" % self.full
 		
     @property	
-	def guessit(self):
-		data = guessit.guessit(self.full)
-		return data
+    def guessit(self):
+        data = guessit.guessit(self.full)
+        return data
 
