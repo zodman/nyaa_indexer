@@ -75,6 +75,7 @@ class Torrent(models.Model):
     url = models.URLField()
     download_url = models.URLField()
     download_magnet = models.TextField(null=True)
+    date = models.DateTimeField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

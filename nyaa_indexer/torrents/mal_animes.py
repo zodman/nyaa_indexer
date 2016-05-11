@@ -44,8 +44,20 @@ u'Gate Jieitai Kanochi nite, Kaku Tatakaeri \u2013 Enryuu-hen':("Gate: Jieitai K
 "Kidou Senshi Gundam Tekketsu no Orphans": ("Mobile Suit Gundam: Iron-Blooded Orphans","31251"),
 "Nurse Witch KOMUGI R": ("Nurse Witch Komugi-chan R","31890"),
 "BBKBRNK":("Bubuki Buranki","32023"),
+"Monster Musume no Iru Nichijou Vol":("Monster Musume no Iru Nichijou","30307"),
+"Seto no Hayanome":("Seto no Hanayome","2104"),
+"Kono Danshi Maho Ga Oshigoto Desu":("Kono Danshi, Mahou ga Oshigoto Desu","31815"),
+"Kono Subarashii Sekai ni Shukukufu wo!'":("Kono Subarashii Sekai ni Shukufuku wo!","60553"),
+"Plastic Memories Vol":("Plastic Memories",""),
+"Tabimachi Lateshow":("Tabi machi Late show",""),
+"Onsen Yosei Hakone-chan":("Onsen Yousei Hakone-chan",""),
+"Working!!! SP":("Working!!!",""),
+"Gochumon wa Usagi Desu":("Gochuumon wa Usagi Desu",""),
+"Tonari no Seki kun":("Tonari no Seki-kun",""),
+"Kamisama Hajimemahita":("Kamisama Hajimemashita",""),
 }
 
 BYPASS = [
 "Nietzsche",
+"Ultraman Leo",
 ]
