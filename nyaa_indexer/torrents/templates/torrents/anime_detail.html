@@ -20,8 +20,11 @@
           </div>
           <div class="media-body">
             <h2> {{anime.title}} - <small>{{anime.meta.mal.title_en|default:""}}</small></h2>
+			
             <div>{{anime.meta.mal.synonyms|default:""}}</div>
+			<h3>Sipnosis</h3>
             <p>{{anime.meta.mal.synopsys|safe}}</p>
+
           </div>
         </div>
       </div>
@@ -32,15 +35,22 @@
         {% for fansub  in fansub_list %}
           <div>
               {{fansub.grouper}}
-              <ul>
+              <table>
                 {%for meta in fansub.list %}
-                 <li>
-                     <a href="{{meta.torrent.download_url}}">
-                      {{meta.torrent.full}}
-                      </a>
-                 </li>
+                 <tr>
+				 	<td>{{meta.torrent.full}}</td>
+					<td>{{meta.torrent.guessit.release_group}}</td>
+					<td>{{meta.torrent.guessit.title}}</td>
+					<td>{{meta.torrent.guessit.format}}</td>
+					<td>{{meta.torrent.guessit.episode}}</td>
+				       <td>
+					   <a href="{{meta.torrent.download_url}}">
+					   <span class="glyphicon glyphicon-download"></span>
+					   </a>
+					   </td>
+                 </tr>
                 {% endfor %}
-              </ul>
+              </table>
           </div>
         {% endfor %}
       </div>

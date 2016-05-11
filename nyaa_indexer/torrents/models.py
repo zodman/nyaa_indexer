@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 from django.db import models
 from django.template.defaultfilters import slugify
+import guessit
 
 
 class Fansub(models.Model):
@@ -26,7 +27,6 @@ class Anime(models.Model):
     def meta(self):
         meta = self.metatorrent_set.first()
         return meta
-
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
@@ -79,4 +79,9 @@ class Torrent(models.Model):
 
     def __unicode__(self):
         return u"%s" % self.full
+		
+    @property	
+	def guessit(self):
+		data = guessit.guessit(self.full)
+		return data
 

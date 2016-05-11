@@ -27,7 +27,11 @@
           <a href="{% url 'anime_detail' anime.pk %}">
               <img  class="img-thumbnail thumb" src="{{anime.meta.mal.image}}" />
           </a>
-          <h3>{{anime.title}}</h3>
+          <h3>{{anime.title}} 
+			{% if anime.meta.episode %}
+			- {{anime.meta.episode}}
+			{%endif %}
+			</h3>
           </div>
         {% endfor %}
         </div>
@@ -44,7 +48,11 @@
           <a href="{% url 'anime_detail' anime.pk %}">
               <img  class="img-thumbnail thumb" src="{{anime.meta.mal.image}}" />
           </a>
-          <h3>{{anime.title}}</h3>
+          <h3>{{anime.title}}
+		  {% if anime.meta.episode %}
+			- {{anime.meta.episode}}
+			{%endif %}
+		  </h3>
           </div>
         {% endfor %}
         </div>
