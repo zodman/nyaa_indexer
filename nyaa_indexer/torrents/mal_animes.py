@@ -48,6 +48,7 @@ u'Gate Jieitai Kanochi nite, Kaku Tatakaeri \u2013 Enryuu-hen':("Gate: Jieitai K
 "Seto no Hayanome":("Seto no Hanayome","2104"),
 "Kono Danshi Maho Ga Oshigoto Desu":("Kono Danshi, Mahou ga Oshigoto Desu","31815"),
 "Kono Subarashii Sekai ni Shukukufu wo!'":("Kono Subarashii Sekai ni Shukufuku wo!","60553"),
+"Kono Subarishii Sekai ni Shufukufu wo!'":("Kono Subarashii Sekai ni Shukufuku wo!","60553"),
 "Plastic Memories Vol":("Plastic Memories",""),
 "Tabimachi Lateshow":("Tabi machi Late show",""),
 "Onsen Yosei Hakone-chan":("Onsen Yousei Hakone-chan",""),
@@ -55,9 +56,14 @@ u'Gate Jieitai Kanochi nite, Kaku Tatakaeri \u2013 Enryuu-hen':("Gate: Jieitai K
 "Gochumon wa Usagi Desu":("Gochuumon wa Usagi Desu",""),
 "Tonari no Seki kun":("Tonari no Seki-kun",""),
 "Kamisama Hajimemahita":("Kamisama Hajimemashita",""),
+"Tamaidou Gakuen":("Taimadou Gakuen 35 Shiken Shoutai",""),
+"Valkyrie Drive Mermaid":("Valkyrie Drive: Mermaid",""),
+"Hokuto no Ken 2 et Hokuto no Ken Ichigo Aji":("DD Hokuto no Ken 2 Ichigo Aji+",""),
+"ONE-PUNCH-MAN":("ONE PUNCH MAN",""),
+"Kindaichi Shounen no Jikembo Returns": ("Kindaichi Shounen no Jikenbo Returns",""),
 }
 
 BYPASS = [
 "Nietzsche",
-"Ultraman Leo",
+"Ultraman",
 ]

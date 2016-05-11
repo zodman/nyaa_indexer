@@ -34,11 +34,13 @@ class Command(BaseCommand):
                     flag_next = True
                     break
             if flag_next: continue
-
-            torrent,created  = Torrent.objects.get_or_create(full=res.title, url=res.link, download_url = res.link.replace("view","download"))
-            torrent.date = make_aware(res.date)
-            torrent.save()
-            data = guessit.guessit(res.title, {"episode_prefer_number":True})
+            tqdm.write("%s %s" % (res.title, make_aware(res.date)))
+            torrent,created  = Torrent.objects.get_or_create(full=res.title, 
+                url=res.link, download_url = res.link.replace("view","download"),
+                date=make_aware(res.date)
+                )
+            full = res.title.replace("[BATCH]","").replace("[Batch]","")
+            data = guessit.guessit(full, {"episode_prefer_number":True})
             title = data.get("title")
             kwargs_ = {}
             if title in MAL_ANIMES:
