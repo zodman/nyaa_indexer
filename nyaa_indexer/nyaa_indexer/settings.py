@@ -187,5 +187,4 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 
-CACHE_BACKEND = 'cache_utils.group_backend://localhost:11211/'
 

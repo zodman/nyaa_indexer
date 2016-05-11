@@ -24,10 +24,13 @@ class Command(BaseCommand):
                         break
                  
                     offset +=1
+                    flag_next = False
                     for res in tqdm(results):
                         for j in BYPASS:
-                            if j in res.title:
-                                continue
+                            if j.lower() in res.title.lower():
+                                flag_next = True
+                                break
+                        if flag_next: continue
                         torrent,created  = Torrent.objects.get_or_create(full=res.title, url=res.link, download_url = res.link.replace("view","download"))
                         data = guessit.guessit(res.title, {"episode_prefer_number":True})
                         title = data.get("title")

@@ -5,7 +5,15 @@ from collections import namedtuple
 from webscraping import xpath
 from tqdm import tqdm
 import HTMLParser
+from memorised.decorators import memorise
 
+MalResult = namedtuple('MalResult',[
+    'title','title_en','synonyms', 'episodes','img','resumen','status',"type",
+    'id','synopsys'
+    ])
+
+
+@memorise()
 def translate(to_translate, to_langage="auto", langage="auto"):
     agents = {'User-Agent':"Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30)"}
     before_trans = 'class="t0">'
@@ -22,6 +30,7 @@ def translate(to_translate, to_langage="auto", langage="auto"):
     result = result.split("<")[0]
     return result
 
+@memorise()
 def mal(mal_title, mal_id=False):
     cookies = {"incap_ses_224_81958":"P6tYbUr7VH9V6shgudAbA1g5FVYAAAAAyt7eDF9npLc6I7roc0UIEQ=="}
     response = requests.get(
@@ -51,10 +60,7 @@ def mal(mal_title, mal_id=False):
     resumen = translate(resumen,'es')
     status = translate(status,'es')
     assert id is not "", mal_title
-    MalResult = namedtuple('MalResult',[
-    'title','title_en','synonyms', 'episodes','img','resumen','status',"type",
-    'id','synopsys'
-    ])
+
     data=dict(title=title, title_en=title_en, type=type_, status=status,
     resumen=resumen, img=img,episodes=episodes, synonyms=synonyms,id=id, synopsys=synopsys)
     return MalResult(**data)

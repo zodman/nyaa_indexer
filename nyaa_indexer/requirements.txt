@@ -7,3 +7,4 @@ guessit
 nyaa
 webscraping
 tqdm
+memorised
