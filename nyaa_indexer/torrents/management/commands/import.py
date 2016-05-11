@@ -25,8 +25,9 @@ class Command(BaseCommand):
                  
                     offset +=1
                     for res in tqdm(results):
-                        if res.title in BYPASS:
-                            continue
+                        for j in BYPASS:
+                            if j in res.title:
+                                continue
                         torrent,created  = Torrent.objects.get_or_create(full=res.title, url=res.link, download_url = res.link.replace("view","download"))
                         data = guessit.guessit(res.title, {"episode_prefer_number":True})
                         title = data.get("title")

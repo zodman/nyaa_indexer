@@ -47,5 +47,5 @@ u'Gate Jieitai Kanochi nite, Kaku Tatakaeri \u2013 Enryuu-hen':("Gate: Jieitai K
 }
 
 BYPASS = [
-"Nietzsche-sensei",
+"Nietzsche",
 ]
