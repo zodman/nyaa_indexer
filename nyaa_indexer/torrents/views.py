@@ -9,8 +9,8 @@ class HomePage(TemplateView):
         torrents = Torrent.objects.all()[0:10]
         context.update({
         "last_torrents": torrents,
-        'animes': Anime.objects.all().order_by("?")[0:8],
-        'animes_emision':  Anime.objects.filter(metatorrent__mal__status__icontains='emisi').distinct().order_by("?")[0:8],
+        'animes': Anime.objects.all().order_by("?")[0:4],
+        'animes_emision':  Anime.objects.filter(metatorrent__mal__status__icontains='emisi').distinct().order_by("?"),
         })
         return context
 homepage= HomePage.as_view()
