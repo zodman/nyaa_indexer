@@ -7,18 +7,59 @@
 {% block body_class %}home{% endblock %}
 
 {% block body_base %}
-<section>
 
+<section>
+      <div class="container">
+        <div class="row">
+          <h2 class="text-center">Animes Populares </h3>
+          <hr>
+        {%for anime  in animes %} 
+        <div class="pull-left col-md-3 thumb-block">
+          <a href="{% url 'anime_detail' anime.pk %}">
+              <img  class="img-thumbnail thumb" src="{{anime.meta.mal.image}}" />
+          </a>
+          <h3>{{anime.title}}</h3>
+          </div>
+        {% endfor %}
+        </div>
+        </div>
+    </section>
+
+<section>
+      <div class="container">
+        <div class="row">
+          <h2 class="text-center">Animes en Emisión  </h3>
+          <hr>
+        {%for anime  in animes_emision %} 
+        <div class="pull-left col-md-3 thumb-block">
+          <a href="{% url 'anime_detail' anime.pk %}">
+              <img  class="img-thumbnail thumb" src="{{anime.meta.mal.image}}" />
+          </a>
+          <h3>{{anime.title}}</h3>
+          </div>
+        {% endfor %}
+        </div>
+        </div>
+    </section>
+
+
+
+
+<section>
       <div class="container bg-dark">
         <div class="row">
           <h2 class="text-center">Ultimos agregados </h3>
           <hr>
         {%for torrent in last_torrents %} 
-        <div class="pull-left col-md-3 thumb-block">
-          <img  class="img-thumbnail thumb" src="{{torrent.metatorrent.mal.image}}" />
-          <h3>{{torrent.metatorrent.anime.title}}</h3>
+        <div class="pull-left col-md-3 thumb-block" id="torrent_{{torrent.id}}">
+          {% if torrent.metatorrent %}
+          <a href="{% url 'anime_detail' torrent.metatorrent.anime.pk %}">
+              <img  class="img-thumbnail thumb" src="{{torrent.metatorrent.mal.image}}" />
+          </a>
+          {%endif%}
+          <h3>{{torrent.metatorrent.anime.title|default:torrent.full}}</h3>
           [{{torrent.metatorrent.fansub.name}}] 
-            {{torrent.metatorrent.episode|default:""}} 
+            episodio: {{torrent.metatorrent.episode|default:""}} 
             <small>{{torrent.metatorrent.format|default:""}}</small>
           </div>
         {% endfor %}

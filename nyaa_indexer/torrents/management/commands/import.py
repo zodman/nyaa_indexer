@@ -9,6 +9,7 @@ from tqdm import tqdm
 NYAA_USERS = {
 'hoshisora.moe':[158741,],
 'puya.se': [239789,],
+'mabushii':[81074,]
 }
 
 
@@ -16,7 +17,7 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         for fansub, users in NYAA_USERS.items():
             for user in users:
-                offset = 3
+                offset = 1
                 while True:
                     results = nyaa.search(user=user,offset=offset)
                     if not results:
@@ -35,7 +36,13 @@ class Command(BaseCommand):
                         anime,_ = Anime.objects.get_or_create(title=data.get("title"))
                         fansub,_ = Fansub.objects.get_or_create(name=data.get("release_group"))
                         mal_obj, _ = MALMeta.objects.get_or_create(mal_id=mal_data.id)
+                        mal_obj.title = mal_data.title
                         mal_obj.image = mal_data.img
+                        mal_obj.synopsys = mal_data.synopsys
+                        mal_obj.resumen = mal_data.resumen
+                        mal_obj.synonyms = mal_data.synonyms
+                        mal_obj.title_en = mal_data.title_en
+                        mal_obj.status = mal_data.status
                         mal_obj.save()
                         meta,_ = MetaTorrent.objects.get_or_create(
                                 anime=anime, torrent=torrent,fansub=fansub, mal=mal_obj)

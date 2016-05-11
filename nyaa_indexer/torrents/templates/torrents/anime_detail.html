@@ -1,0 +1,50 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{{anime.title}}{% endblock %}
+
+{% block body_class %}detail-anime{% endblock %}
+
+{% block body_base %}
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-2 col-md-8 ">
+        <div class="media">
+          <div class="media-left">
+            <a href="">
+              <img class="media-object" src="{{anime.meta.mal.image}}" alt="">
+            </a>
+            <span class="label label-default ">{{anime.meta.mal.status}}</span>
+          </div>
+          <div class="media-body">
+            <h2> {{anime.title}} - <small>{{anime.meta.mal.title_en|default:""}}</small></h2>
+            <div>{{anime.meta.mal.synonyms|default:""}}</div>
+            <p>{{anime.meta.mal.synopsys|safe}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        {% regroup anime.metatorrent_set.all|dictsort:"episode" by fansub.name as fansub_list %}
+        {% for fansub  in fansub_list %}
+          <div>
+              {{fansub.grouper}}
+              <ul>
+                {%for meta in fansub.list %}
+                 <li>
+                     <a href="{{meta.torrent.download_url}}">
+                      {{meta.torrent.full}}
+                      </a>
+                 </li>
+                {% endfor %}
+              </ul>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

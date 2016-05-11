@@ -38,6 +38,7 @@ MAL_ANIMES = {
 "Showa Genroku Rakugo Shinju": ("Shouwa Genroku Rakugo Shinjuu", "28753"),
 "Osomatsu san": ("Osomatsu-san","31174"),
 "Gate Jieitai Kanochi nite, Kaku Tatakaeri":("Gate: Jieitai Kanochi nite, Kaku Tatakaeri","28907"),
+"Gate Jietai Kanochi nite, Kaku Tatakaeri":("Gate: Jieitai Kanochi nite, Kaku Tatakaeri","28907"),
 "Gate Jieitai Kanochi nite, Kaku Tatakaeri – Enryuu-hen":("Gate: Jieitai Kanochi nite, Kaku Tatakaeri","28907"),
 u'Gate Jieitai Kanochi nite, Kaku Tatakaeri \u2013 Enryuu-hen':("Gate: Jieitai Kanochi nite, Kaku Tatakaeri","28907"),
 "Kidou Senshi Gundam Tekketsu no Orphans": ("Mobile Suit Gundam: Iron-Blooded Orphans","31251"),
