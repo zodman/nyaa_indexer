@@ -35,11 +35,11 @@ class Command(BaseCommand):
                     flag_next = True
                     break
             if flag_next: continue
-            tqdm.write("%s %s " % (res.title, res.link ))
             date = make_aware(res.date, is_dst=False)
             torrent,created  = Torrent.objects.get_or_create(full=res.title, 
                 url=res.link.replace("download","view"), defaults=dict(download_url = res.link.replace("view","download"),
                 date=date))
+            tqdm.write("%s %s " % (res.title, res.link ))
             full = res.title
             data = guessit.guessit(full, {"episode_prefer_number":True, 'expected_group':RELEASE_GROUPS})
             title = data.get("title")

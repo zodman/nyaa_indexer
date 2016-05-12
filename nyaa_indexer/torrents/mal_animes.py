@@ -82,6 +82,8 @@ u'C\xb3 Cube x Cursed x Curious':("Cube","10578"),
 "To Aru Kagaku no Railgun OVA":("Toaru Kagaku no Railgun",""),
 "Gochuumon wa Usagui Desu ka?":("Gochuumon wa Usagi Desu ka?",""),
 "Gate: Jieitai Kanochi nite, Kaku Tatakeri":("Gate: Jieitai Kanochi nite, Kaku Tatakaeri",""),
+"Subete ga Naru F":("Subete","28621"),
+"Noragami Aragato":("Noragami Aragoto","30503"),
 }
 
 BYPASS = [
@@ -98,4 +100,5 @@ RELEASE_GROUPS = [
 "EaS",
 "HEZ",
 "EagleZora",
+"PuyaSubs",
 ]
