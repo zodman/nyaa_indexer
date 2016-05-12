@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import *
 
-for i in (Anime, MetaTorrent,  Fansub,Torrent):
+for i in (Anime, MetaTorrent,  Fansub,Torrent, ReleaseGroup):
     admin.site.register(i)
 
 class AdminMAL(admin.ModelAdmin):
@@ -12,4 +12,4 @@ admin.site.register(MALMeta, AdminMAL)
 #class AdminTorrent(admin.ModelAdmin):
     #list_display = ("full", "url")
     #search_fields = ("full",)
-#admin.site.regirrent, AdminTorrent)
+#admin.site.regirrent, AdminTorrent),w

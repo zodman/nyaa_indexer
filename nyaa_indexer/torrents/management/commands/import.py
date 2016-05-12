@@ -3,7 +3,7 @@ from django.utils.timezone import make_aware
 from nyaa import nyaa
 import guessit
 from torrents.utils import mal
-from torrents.models import Torrent, Anime, MetaTorrent, Fansub, MALMeta
+from torrents.models import Torrent, Anime, MetaTorrent, Fansub, MALMeta,ReleaseGroup
 from torrents.mal_animes import MAL_ANIMES, BYPASS
 from tqdm import tqdm
 
@@ -18,6 +18,7 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         results = []
         for fansub, users in tqdm(NYAA_USERS.items()):
+            f,_ = Fansub.objects.get_or_create(name=fansub)
             for user in users:
                 offset = 1
                 while True:
@@ -39,7 +40,7 @@ class Command(BaseCommand):
                 url=res.link, download_url = res.link.replace("view","download"),
                 date=make_aware(res.date)
                 )
-            full = res.title.replace("[BATCH]","").replace("[Batch]","")
+            full = res.title.replace("[BATCH]","").replace("[Batch]","").replace("[Completa]","")
             data = guessit.guessit(full, {"episode_prefer_number":True})
             title = data.get("title")
             kwargs_ = {}
@@ -49,7 +50,7 @@ class Command(BaseCommand):
                 kwargs_ = {'mal_id':mal_id}
             mal_data = mal(title,**kwargs_)
             anime,_ = Anime.objects.get_or_create(title=data.get("title"))
-            fansub,_ = Fansub.objects.get_or_create(name=data.get("release_group"))
+            release_group,_ = ReleaseGroup.objects.get_or_create(name=data.get("release_group"))
             mal_obj, _ = MALMeta.objects.get_or_create(mal_id=mal_data.id)
             mal_obj.title = mal_data.title
             mal_obj.image = mal_data.img
@@ -60,7 +61,7 @@ class Command(BaseCommand):
             mal_obj.status = mal_data.status
             mal_obj.save()
             meta,_ = MetaTorrent.objects.get_or_create(
-                    anime=anime, torrent=torrent,fansub=fansub, mal=mal_obj)
+                    anime=anime, torrent=torrent,release_group=release_group, mal=mal_obj)
             meta.episode=data.get("episode", data.get("episode_title"))
             meta.format=data.get("format", data.get("screen_size"))
             meta.save()

@@ -4,11 +4,21 @@ from django.template.defaultfilters import slugify
 import guessit
 
 
+class ReleaseGroup(models.Model):
+    name = models.CharField(max_length=100,unique=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __unicode__(self):
+        return u"%s" % self.name
+
+
 class Fansub(models.Model):
     name = models.CharField(max_length=100,unique=True)
     slug = models.SlugField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    release_groups = models.ManyToManyField('ReleaseGroup')
 
     def __unicode__(self):
         return u"%s" % self.name
@@ -57,7 +67,7 @@ class MALMeta(models.Model):
 
 
 class MetaTorrent(models.Model):
-    fansub = models.ForeignKey("Fansub")
+    release_group = models.ForeignKey("ReleaseGroup")
     anime = models.ForeignKey("Anime")
     mal = models.ForeignKey("MALMeta")
     torrent = models.OneToOneField("Torrent")
