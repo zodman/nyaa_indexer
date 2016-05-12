@@ -8,8 +8,8 @@ from torrents.mal_animes import MAL_ANIMES, BYPASS, RELEASE_GROUPS
 from tqdm import tqdm
 
 NYAA_USERS = {
-'hoshisora.moe':[158741,],
-#'puya.se': [239789,],
+'hoshizora.moe':[158741,],
+'puya.se': [239789,],
 'mabushii':[81074,]
 }
 
@@ -35,15 +35,14 @@ class Command(BaseCommand):
                     flag_next = True
                     break
             if flag_next: continue
-            tqdm.write("%s %s %s" % (res.title, res.link, make_aware(res.date)))
+            tqdm.write("%s %s " % (res.title, res.link ))
+            date = make_aware(res.date, is_dst=False)
             torrent,created  = Torrent.objects.get_or_create(full=res.title, 
                 url=res.link.replace("download","view"), defaults=dict(download_url = res.link.replace("view","download"),
-                date=make_aware(res.date))
-                )
+                date=date))
             full = res.title
             data = guessit.guessit(full, {"episode_prefer_number":True, 'expected_group':RELEASE_GROUPS})
             title = data.get("title")
-            assert data.get("release_group")!="4B7DCAE",data
             kwargs_ = {}
             if title in MAL_ANIMES:
                 search_title,  mal_id = MAL_ANIMES[title]

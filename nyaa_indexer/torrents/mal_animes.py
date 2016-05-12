@@ -80,6 +80,8 @@ u'Gate Jieitai Kanochi nite, Kaku Tatakaeri \u2013 Enryuu-hen':("Gate: Jieitai K
 u'C\xb3 Cube x Cursed x Curious':("Cube","10578"),
 "Baby Princess 2D Paradise 0":("Baby Princess 3D Paradise",""),
 "To Aru Kagaku no Railgun OVA":("Toaru Kagaku no Railgun",""),
+"Gochuumon wa Usagui Desu ka?":("Gochuumon wa Usagi Desu ka?",""),
+"Gate: Jieitai Kanochi nite, Kaku Tatakeri":("Gate: Jieitai Kanochi nite, Kaku Tatakaeri",""),
 }
 
 BYPASS = [
