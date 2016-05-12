@@ -1,6 +1,5 @@
-{% extends "site_base.html" %}
-
-{% load i18n %}
+{% extends "site_base.html" %} 
+{% load i18n torrents_tags %}
 
 {% block head_title %}{{anime.title}}{% endblock %}
 
@@ -14,36 +13,48 @@
       <hr>
     </div>
   </div>
-</section>
-
+</section> 
+{%for release_group in fansub.release_groups.all %}
 <section>
   <div class="container">
-    {% regroup fansub.metatorrent_set.all|dictsort:"anime.title" by anime as anime_list%}
-
-
+    {% regroup release_group.metatorrent_set.all|dictsort:"anime.title" by anime as anime_list%}
     {%for anime_grp in anime_list %} 
-    <div class="row">
-      <div class="col-md-12">
-            <h4> 
-              {{anime_grp.grouper}}
+    <div class="row well">
+ <h4 class="text-center"> 
+    {{release_group}} - 
+                    {{anime_grp.grouper}}
             </h4>
-            <table id="fansub-torrent-list" class="table table-hover">
+
+         <div class="col-md-3">
+  
+            <a href="{% show_anime anime_grp.grouper %}">
+                      <img src="{%show_image anime_grp.grouper%}" />
+            </a>
+      </div>
+      <div class="col-md-9">
+            <table id="fansub-torrent-list" class="table table-hover table-bordered">
             {% for mt in anime_grp.list %}
               <tr>
-                <td class="col-md-10">{{mt.episode|default:mt.torrent.full}}</td>
-                <td class="col-md-1">{{mt.torrent.guessit.format}}</td>
-                <td class="col-md-1">
-                  <a href="{{mt.torrent.download_url}}">
+                <td colspan="3" >{{mt.torrent.full}} </td>
+            </tr>
+
+              <tr>
+                <td> {{mt.episode|default:mt.torrent.guessit.title}}</td>
+                <td>{{mt.torrent.guessit.format}}</td>
+                 <td>
+                 <a href="{{mt.torrent.download_url}}">
                     <span class="glyphicon glyphicon-download"></span>
                   </a>
+                <a href="{{mt.torrent.url}}"><span class="glyphicon glyphicon-eye-open"></span> </a>
                 </td>
+
               </tr>
-            {% endfor %}
+           {% endfor %}
             </table>
           </div>
         </div>
     {% endfor %}
   </div>
 </section>
-
+{% endfor %}
 {% endblock %}

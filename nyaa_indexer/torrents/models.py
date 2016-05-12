@@ -6,6 +6,7 @@ import guessit
 
 class ReleaseGroup(models.Model):
     name = models.CharField(max_length=100,unique=True)
+    alias = models.CharField(max_length=100,null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -70,7 +71,7 @@ class MetaTorrent(models.Model):
     release_group = models.ForeignKey("ReleaseGroup")
     anime = models.ForeignKey("Anime")
     mal = models.ForeignKey("MALMeta")
-    torrent = models.OneToOneField("Torrent")
+    torrent = models.OneToOneField("Torrent",  on_delete=models.CASCADE)
     episode = models.CharField(max_length=20, null=True, blank=True)
     format = models.CharField(max_length=10,null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -81,7 +82,7 @@ class MetaTorrent(models.Model):
 
 
 class Torrent(models.Model):
-    full = models.TextField(unique=True)
+    full = models.TextField()
     url = models.URLField()
     download_url = models.URLField()
     download_magnet = models.TextField(null=True)
@@ -91,6 +92,7 @@ class Torrent(models.Model):
 
     class Meta:
         ordering =("-created_at",'-id',)
+        unique_together = ("full","url")
 
     def __unicode__(self):
         return u"%s" % self.full

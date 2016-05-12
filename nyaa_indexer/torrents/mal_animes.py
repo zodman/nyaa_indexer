@@ -20,7 +20,7 @@ MAL_ANIMES = {
 "Buddy Complex Kanketsu-hen Ano Sora ni Kaeru Mirai de":("Buddy Complex: Kanketsu-hen - Ano Sora ni Kaeru Mirai de","24469"),
 "Code Geass Boukoku no Akito 1": ("Code Geass: Boukoku no Akito 1 - Yokuryuu wa Maiorita", "8888"),
 "Dungeon ni Deai o Motomeru no wa Machigatteiru Darou":("Dungeon ni Deai wo Motomeru no wa Machigatteiru Darou ka","28121"),
-"Fairy Tail Houou no Miko":("Fairy Tail: Houou no Miko - Hajimari no Asa","54697"),
+"Fairy Tail Houou no Miko":("Fairy Tail Movie 1: Houou no Miko - Hajimari no Asa","17535"),
 "Fate kaleid liner Prisma Illya": ("Fate/kaleid liner Prisma☆Illya","14829"),
 "Fate kaleid liner Prisma Illya OVA":("Fate/kaleid liner Prisma☆Illya 2wei! OVA","26057"),
 "Fate stay night":("Fate/stay night","356"),
@@ -61,9 +61,39 @@ u'Gate Jieitai Kanochi nite, Kaku Tatakaeri \u2013 Enryuu-hen':("Gate: Jieitai K
 "Hokuto no Ken 2 et Hokuto no Ken Ichigo Aji":("DD Hokuto no Ken 2 Ichigo Aji+",""),
 "ONE-PUNCH-MAN":("ONE PUNCH MAN",""),
 "Kindaichi Shounen no Jikembo Returns": ("Kindaichi Shounen no Jikenbo Returns",""),
+"Gekijouban Card Captor Sakura":("Cardcaptor Sakura Movie 2: The Sealed Card",""),
+"Mahou Shoujo Madoka Magica Rebellion":("Mahou Shoujo Madoka★Magica Movie 3: Hangyaku no Monogatari",""),
+"Monogatari Series Second Season":("Monogatari Series",""),
+"Rebuild of Evangelion 1-3":("Rebuild of Evangelion",""),
+"The World God Only Knows Tenri-hen":("Kami nomi zo Shiru Sekai: Tenri-hen",""),
+"Gekijouban Mahou Shoujo Madoka Magica 1-2":("Gekijouban","62671"),
+"Gekijouban Mahou Shoujo Madoka":("Gekijouban","62671"),
+"Nekomonogatari Shiro": ("Nekomonogatari",""),
+" Memories Off 2nd & 5 ":("Memories Off" ,""),
+"Mahou Shoujo Madoka Magica Hajimari no Monogatari":("Mahou Shoujo Madoka★Magica Movie 1: Hajimari no Monogatari","11977"),
+"Vampire Hunter D 1985 &":("Vampire Hunter D",""),
+"Kokoro Connect Batch":("Kokoro Connect",""),
+"Jormungand Batch":("Jormungand",""),
+"Kamijigen Game Neptune PP":("Choujigen Game Neptune The Animation",""),
+"To Aru Kagaku no Railgun S":("Toaru Kagaku no Railgun",""),
+"Haiyoru! Nyaruani Remember My Love":("Haiyoru! Nyaruani: Remember My Love(craft-sensei)",""),
+u'C\xb3 Cube x Cursed x Curious':("Cube","10578"),
+"Baby Princess 2D Paradise 0":("Baby Princess 3D Paradise",""),
+"To Aru Kagaku no Railgun OVA":("Toaru Kagaku no Railgun",""),
 }
 
 BYPASS = [
 "Nietzsche",
 "Ultraman",
+"Mabushii OST",
+]
+
+RELEASE_GROUPS = [
+"ShinGureZora",
+"Mabushii",
+"Hoshizora",
+"Mezazora",
+"EaS",
+"HEZ",
+"EagleZora",
 ]

@@ -31,14 +31,16 @@
     </div>
     <div class="row">
       <div class="col-md-12">
-        {% regroup anime.metatorrent_set.all|dictsort:"episode" by fansub.name as fansub_list %}
+        {% regroup anime.metatorrent_set.all|dictsort:"episode" by release_group.name as fansub_list %}
         {% for fansub  in fansub_list %}
           <div>
               {{fansub.grouper}}
-              <table class="table table-hover">
+              <table class="table table-hover table-bordered">
                 {%for meta in fansub.list %}
+                <tr>
+				 	        <td colspan="6">{{meta.torrent.full}}</td>
+                </tr>
                  <tr>
-				 	<!--td>{{meta.torrent.full}}</td-->
 					<td>{{meta.torrent.guessit.release_group}}</td>
 					<td>{{meta.torrent.guessit.title}}</td>
 					<td>{{meta.torrent.guessit.format}}</td>
