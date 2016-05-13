@@ -23,6 +23,7 @@ MAL_ANIMES = {
 "Fairy Tail Houou no Miko":("Fairy Tail Movie 1: Houou no Miko - Hajimari no Asa","17535"),
 "Fate kaleid liner Prisma Illya": ("Fate/kaleid liner Prisma☆Illya","14829"),
 "Fate Kaleid Liner Prisma Illya 2wei Herz!":("Fate/kaleid","27525"),
+"Fate kaleid liner PRISMA ILLYA 2wei Herz!":("Fate/kaleid","27525"),
 "Fate kaleid liner Prisma Illya OVA":("Fate/kaleid liner Prisma☆Illya 2wei! OVA","26057"),
 "Fate stay night":("Fate/stay night","356"),
 "Fate stay Night Unlimited Blade Works":("Fate/stay night: Unlimited Blade Works","22297"),
@@ -92,6 +93,7 @@ u'C\xb3 Cube x Cursed x Curious':("Cube","10578"),
 "AnoHana Ano Hi Mita Hana no Namae wo Bokutachi wa Mada Shiranai":("Ano Hi Mita Hana no Namae wo Bokutachi wa Mada Shiranai",""),
 "Wakako Zake":("Wakako-Zake",""),
 "Akagi Drama":("Akagi","1218"),
+"Rokka no Yusha":("Rokka no Yuusha",""),
 }
 
 BYPASS = [
