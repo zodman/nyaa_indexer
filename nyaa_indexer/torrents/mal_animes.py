@@ -22,6 +22,7 @@ MAL_ANIMES = {
 "Dungeon ni Deai o Motomeru no wa Machigatteiru Darou":("Dungeon ni Deai wo Motomeru no wa Machigatteiru Darou ka","28121"),
 "Fairy Tail Houou no Miko":("Fairy Tail Movie 1: Houou no Miko - Hajimari no Asa","17535"),
 "Fate kaleid liner Prisma Illya": ("Fate/kaleid liner Prisma☆Illya","14829"),
+"Fate Kaleid Liner Prisma Illya 2wei Herz!":("Fate/kaleid","27525"),
 "Fate kaleid liner Prisma Illya OVA":("Fate/kaleid liner Prisma☆Illya 2wei! OVA","26057"),
 "Fate stay night":("Fate/stay night","356"),
 "Fate stay Night Unlimited Blade Works":("Fate/stay night: Unlimited Blade Works","22297"),
@@ -84,12 +85,20 @@ u'C\xb3 Cube x Cursed x Curious':("Cube","10578"),
 "Gate: Jieitai Kanochi nite, Kaku Tatakeri":("Gate: Jieitai Kanochi nite, Kaku Tatakaeri",""),
 "Subete ga Naru F":("Subete","28621"),
 "Noragami Aragato":("Noragami Aragoto","30503"),
+"Senki Zessho Symphogear GX":("Senki Zesshou Symphogear GX: Believe in Justice and Hold a Determination to Fist",""),
+"Classroom Crisis":("Classroom☆Crisis",""),
+"Wooser no Sono Higurashi Mugen-hen":("Wooser no Sono Higurashi: Mugen-hen",""),
+"Wakaba Girl":("Wakaba*Girl",""),
+"AnoHana Ano Hi Mita Hana no Namae wo Bokutachi wa Mada Shiranai":("Ano Hi Mita Hana no Namae wo Bokutachi wa Mada Shiranai",""),
+"Wakako Zake":("Wakako-Zake",""),
+"Akagi Drama":("Akagi","1218"),
 }
 
 BYPASS = [
 "Nietzsche",
 "Ultraman",
 "Mabushii OST",
+"Death Note Drama",
 ]
 
 RELEASE_GROUPS = [
@@ -101,4 +110,5 @@ RELEASE_GROUPS = [
 "HEZ",
 "EagleZora",
 "PuyaSubs",
+"PuyaBD!",
 ]
