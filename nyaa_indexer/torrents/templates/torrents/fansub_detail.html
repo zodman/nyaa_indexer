@@ -25,11 +25,13 @@
                     {{anime_grp.grouper}}
             </h4>
 
-         <div class="col-md-3">
-  
-            <a href="{% show_anime anime_grp.grouper %}">
-                      <img src="{%show_image anime_grp.grouper%}" />
-            </a>
+            <div class="col-md-3">
+              {% comment %}
+        {%  show_anime anime_grp.grouper as anime %}
+        <a href="{% url 'anime_detail' anime.pk %}">
+          <img src="{{ anime.meta.mal.image }}" />
+        </a>
+        {% endcomment %}
       </div>
       <div class="col-md-9">
             <table id="fansub-torrent-list" class="table table-hover table-bordered">

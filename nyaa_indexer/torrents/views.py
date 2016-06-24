@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView, DetailView
-from torrents.models import Torrent, MALMeta, Anime, Fansub
+from torrents.models import Torrent, MALMeta, Anime, Fansub, MetaTorrent
 
 class HomePage(TemplateView):
     template_name="homepage.html"
@@ -34,6 +34,16 @@ fansub = FansubView.as_view()
 
 class FansubDetail(DetailView):
     model = Fansub
+    def get_context_data(self, **context):
+        fansub = self.object 
+        rilis_group = fansub.release_groups.all()
+        metas = MetaTorrent.objects.filter(release_group=rilis_group)
+        l = []
+        assert False, metas
+        for i in metas:
+            l.append({'anime_title':i.anime.title,'img':i.mal.image})
+        assert False, l
+        return context
 
 fansub_detail = FansubDetail.as_view()
 
