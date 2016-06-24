@@ -34,15 +34,15 @@ fansub = FansubView.as_view()
 
 class FansubDetail(DetailView):
     model = Fansub
+
     def get_context_data(self, **context):
-        fansub = self.object 
-        rilis_group = fansub.release_groups.all()
-        metas = MetaTorrent.objects.filter(release_group=rilis_group)
-        l = []
-        assert False, metas
-        for i in metas:
-            l.append({'anime_title':i.anime.title,'img':i.mal.image})
-        assert False, l
+        context = super(FansubDetail, self).get_context_data(**context)
+        fansub = self.object
+        rilis_group = fansub.release_groups.all().values_list("id", flat=True)
+        metas = MetaTorrent.objects.filter(release_group__in=rilis_group)
+        all = metas.values("anime__title", 'mal__image', 'anime__id',
+                "mal__status", "release_group__name")
+        context.update({"animes": all.distinct().order_by("mal__status","anime__title")})
         return context
 
 fansub_detail = FansubDetail.as_view()
