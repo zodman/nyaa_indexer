@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.template.defaultfilters import slugify
 import guessit
+from django.core.cache import cache 
 
 
 class ReleaseGroup(models.Model):
@@ -99,6 +100,10 @@ class Torrent(models.Model):
 		
     @property	
     def guessit(self):
-        data = guessit.guessit(self.full)
-        return data
+	full_data = cache.get(self.full)
+	if full_data is None:
+            data = guessit.guessit(self.full)
+            cache.set(self.full, data)
+            full_data = data
+        return full_data
 
