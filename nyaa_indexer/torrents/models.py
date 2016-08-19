@@ -103,7 +103,7 @@ class Torrent(models.Model):
 	full_data = cache.get(slugify(self.full))
 	if full_data is None:
             data = guessit.guessit(self.full)
-            cache.set(slugify(self.full), data)
+            cache.set(slugify(self.full), dict(data.items()))
             full_data = data
         return full_data
 
