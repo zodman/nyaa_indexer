@@ -109,6 +109,10 @@ MIDDLEWARE_CLASSES = [
     "django.contrib.auth.middleware.SessionAuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+  #  'devserver.middleware.DevServerMiddleware',
+
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+
 ]
 
 ROOT_URLCONF = "nyaa_indexer.urls"
@@ -137,6 +141,7 @@ INSTALLED_APPS = [
     # project
     "nyaa_indexer",
     'torrents',
+    "debug_toolbar",
 ]
 
 # A sample logging configuration. The only tangible logging

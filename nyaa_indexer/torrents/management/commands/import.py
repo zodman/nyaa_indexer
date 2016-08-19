@@ -6,6 +6,8 @@ from torrents.utils import mal
 from torrents.models import Torrent, Anime, MetaTorrent, Fansub, MALMeta,ReleaseGroup
 from torrents.mal_animes import MAL_ANIMES, BYPASS, RELEASE_GROUPS
 from tqdm import tqdm
+from django.template.defaultfilters import slugify
+
 
 NYAA_USERS = {
 'hoshizora.moe':[158741,],
@@ -49,7 +51,7 @@ class Command(BaseCommand):
                 title = search_title
                 kwargs_ = {'mal_id':mal_id}
             mal_data = mal(title,**kwargs_)
-            anime,_ = Anime.objects.get_or_create(title=data.get("title"))
+            anime,_ = Anime.objects.get_or_create(slug=slugify(data.get("title")), defaults={"title":data.get("title")})
             release_group,_ = ReleaseGroup.objects.get_or_create(name=data.get("release_group"))
             mal_obj, _ = MALMeta.objects.get_or_create(mal_id=mal_data.id)
             mal_obj.title = mal_data.title

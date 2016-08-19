@@ -30,8 +30,8 @@ class Fansub(models.Model):
         super(Fansub,self).save(*args,**kwargs)
 
 class Anime(models.Model):
-    title = models.CharField(max_length=300, unique=True)
-    slug = models.SlugField()
+    title = models.CharField(max_length=300)
+    slug = models.SlugField(unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
    

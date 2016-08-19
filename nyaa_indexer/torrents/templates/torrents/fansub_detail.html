@@ -6,55 +6,26 @@
 {% block body_class %}detail-anime{% endblock %}
 
 {% block body_base %}
+
 <section>
-  <div class="container">
-    <div class="row">
-      <h2 class="text-center">{{fansub.name}} </h2>
-      <hr>
-    </div>
-  </div>
-</section> 
-{%for release_group in fansub.release_groups.all %}
-<section>
-  <div class="container">
-    {% regroup release_group.metatorrent_set.all|dictsort:"anime.title" by anime as anime_list%}
-    {%for anime_grp in anime_list %} 
-    <div class="row well">
- <h4 class="text-center"> 
-    {{release_group}} - 
-                    {{anime_grp.grouper}}
-            </h4>
-
-         <div class="col-md-3">
-  
-            <a href="{% show_anime anime_grp.grouper %}">
-                      <img src="{%show_image anime_grp.grouper%}" />
-            </a>
-      </div>
-      <div class="col-md-9">
-            <table id="fansub-torrent-list" class="table table-hover table-bordered">
-            {% for mt in anime_grp.list %}
-              <tr>
-                <td colspan="3" >{{mt.torrent.full}} </td>
-            </tr>
-
-              <tr>
-                <td> {{mt.episode|default:mt.anime.title}}</td>
-                <td>{{mt.format}}</td>
-                 <td>
-                 <a href="{{mt.torrent.download_url}}">
-                    <span class="glyphicon glyphicon-download"></span>
-                  </a>
-                <a href="{{mt.torrent.url}}"><span class="glyphicon glyphicon-eye-open"></span> </a>
-                </td>
-
-              </tr>
-           {% endfor %}
-            </table>
-          </div>
+      <div class="container">
+        <div class="row">
+          <h2 class="text-center">{{fansub.name}} </h3>
+          <hr>
+          {%for anime  in animes %} 
+          {% ifchanged  anime.anime__title %}
+        <div class="pull-left col-md-3 thumb-block">
+          <a href="{% url 'anime_detail' anime.anime__id %}#{{anime.release_group__name}}">
+              <img  class="img-thumbnail thumb" src="{{anime.mal__image}}" />
+          </a>
+          <h3 class="text-center">{{anime.anime__title}} <small>{{anime.mal__status}}</small> </h3>
         </div>
-    {% endfor %}
-  </div>
-</section>
-{% endfor %}
+        {% endifchanged %}
+        {% endfor %}
+        </div>
+        </div>
+    </section>
+
+
+
 {% endblock %}

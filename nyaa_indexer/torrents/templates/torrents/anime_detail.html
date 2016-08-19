@@ -23,7 +23,7 @@
 			
             <div>{{anime.meta.mal.synonyms|default:""}}</div>
 			<h3>Sipnosis</h3>
-            <p>{{anime.meta.mal.synopsys|safe}}</p>
+            <p>{{anime.meta.mal.synopsys|safe|safe}}</p>
 
           </div>
         </div>
@@ -33,7 +33,7 @@
       <div class="col-md-12">
         {% regroup anime.metatorrent_set.all|dictsort:"episode" by release_group.name as fansub_list %}
         {% for fansub  in fansub_list %}
-          <div>
+          <div id="fansub.grouper">
               {{fansub.grouper}}
               <table class="table table-hover table-bordered">
                 {%for meta in fansub.list %}

@@ -43,7 +43,7 @@
         <div class="row">
           <h2 class="text-center">Animes en Emisión  </h3>
           <hr>
-        {%for anime  in animes_emision %} 
+        {%for anime  in animes_emision %}
         <div class="pull-left col-md-3 thumb-block">
           <a href="{% url 'anime_detail' anime.pk %}">
               <img  class="img-thumbnail thumb" src="{{anime.meta.mal.image}}" />

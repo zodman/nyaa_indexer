@@ -1,7 +1,11 @@
 from django.contrib import admin
 from .models import *
 
-admin.site.register(Anime)
+
+class AnimeAdmin(admin.ModelAdmin):
+    search_fields= ("title",)
+
+admin.site.register(Anime, AnimeAdmin)
 
 class AdminRilis(admin.ModelAdmin):
     list_display = ("name", "get_torrents")
