@@ -100,6 +100,7 @@ u'C\xb3 Cube x Cursed x Curious':("Cube","10578"),
 "Ushio und Tora":("Ushio and Tora",""),
 "Okusama ga Seitokaicho!":("Okusama ga Seitokaichou!",""),
 "The New Prince of Tennis OVA vs Geniu":("New Prince of Tennis OVA vs. Genius10",""),
+"Mahou Shoujo Naria Girls":("Mahou Shoujo? Naria☆Girls",""),
 }
 
 BYPASS = [

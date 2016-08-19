@@ -50,7 +50,10 @@ class Command(BaseCommand):
                 search_title,  mal_id = MAL_ANIMES[title]
                 title = search_title
                 kwargs_ = {'mal_id':mal_id}
-            mal_data = mal(title,**kwargs_)
+            try:
+                mal_data = mal(title,**kwargs_)
+            except:
+                continue
             anime,_ = Anime.objects.get_or_create(slug=slugify(data.get("title")), defaults={"title":data.get("title")})
             release_group,_ = ReleaseGroup.objects.get_or_create(name=data.get("release_group"))
             mal_obj, _ = MALMeta.objects.get_or_create(mal_id=mal_data.id)
